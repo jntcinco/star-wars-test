@@ -51,6 +51,7 @@ class FilmTable extends React.Component {
     var favorite = {"episode_id":episode_id.toString(), "is_favorite":true};
     axios.post( ADD_TO_FAVORITE_URL, favorite).then(function(response) {
       console.debug("naruto: "+response.data.message);
+      document.getElementById("favAlert").style.display = "block";
       document.getElementById("span-"+episode_id).className = "glyphicon glyphicon-star";
     })
     .catch(function(error) {
