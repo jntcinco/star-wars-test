@@ -68,6 +68,8 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
 ## add all dependencies just run below example commands
+yarn add bootstrap prop-types react-flags countries-api
+yarn add -D npm-run-all node-sass-chokidar
 yarn add react-bootstrap-table-next
 yarn add react-bootstrap-table2-filter
 yarn add react-bootstrap-table2-paginator
