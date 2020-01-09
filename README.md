@@ -67,8 +67,10 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
-## to add dependencies just run below example commands
+## add all dependencies just run below example commands
 yarn add react-bootstrap-table-next
+yarn add react-bootstrap-table2-filter
+yarn add react-bootstrap-table2-paginator
 
 ## Example on how to iterate
 

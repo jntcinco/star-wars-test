@@ -2,12 +2,13 @@
 // allows you to do things like:
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'; 
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import Flag from 'react-flags';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css'; 
 import BootstrapTable from 'react-bootstrap-table-next';
+import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 
 const API_URL = 'https://swapi.co/api/films/';
 
@@ -22,7 +23,8 @@ class FilmTable extends React.Component {
       },
       {
         dataField: 'title',
-        text: 'Film Title'
+        text: 'Film Title',
+        filter: textFilter()
       }
     ]
   }
@@ -48,7 +50,8 @@ class FilmTable extends React.Component {
                  hover
                  keyField='episode_id' 
                  data={ this.state.films } 
-                 columns={ this.state.columns } />
+                 columns={ this.state.columns } 
+                 filter={ filterFactory() } />
 						</div>
 					</div>
 				</div>
