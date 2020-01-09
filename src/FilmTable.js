@@ -2,8 +2,6 @@
 // allows you to do things like:
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css'; 
-import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
@@ -30,19 +28,32 @@ class FilmTable extends React.Component {
           placeholder: 'Search by title...',  // custom the input placeholder
           className: 'my-custom-text-filter', // custom classname on input
           defaultValue: '', // default filtering value
-          comparator: Comparator.EQ, // default is Comparator.LIKE
+          comparator: Comparator.LIKE, // default is Comparator.LIKE
           caseSensitive: true, // default is false, and true will only work when comparator is LIKE
           style: { "width" : "200px", "float" : "left" }, // your custom styles on input
         })
+      },
+      {
+        dataField: 'actions',
+        text: 'Actions'
       }
     ]
+  }
+
+  constructor(props) {
+    super(props);
   }
 
   componentDidMount() {
     axios.get(API_URL).then(res => {
       const films = res.data.results;
+      films.map((film, index) => {
+        film.actions = <button type="button" className="btn btn-default btn-sm">
+                          <span className="glyphicon glyphicon-star-empty"></span> Add to Favourite
+                        </button>;
+      })
       this.setState({ films });
-      console.debug("response: "+this.state.films);
+      console.debug("response: "+JSON.stringify(this.state.films));
     })
   }
 
@@ -60,7 +71,8 @@ class FilmTable extends React.Component {
                  data={ this.state.films } 
                  columns={ this.state.columns } 
                  filter={ filterFactory() } 
-                 pagination={ paginationFactory() } />
+                 pagination={ paginationFactory() } 
+                 sort={ { dataField: 'episode_id', order: 'asc' } } />
 						</div>
 					</div>
 				</div>
