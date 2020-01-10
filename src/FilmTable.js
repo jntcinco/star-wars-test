@@ -4,8 +4,8 @@
 // learn more: https://github.com/testing-library/jest-dom
 import React from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
-import Flag from 'react-flags';
+//import PropTypes from 'prop-types';
+//import Flag from 'react-flags';
 import BootstrapTable from 'react-bootstrap-table-next';
 import filterFactory, { textFilter, Comparator } from 'react-bootstrap-table2-filter';
 import paginationFactory from 'react-bootstrap-table2-paginator';
