@@ -63,7 +63,8 @@ class FilmTable extends React.Component {
     const favFilms = await axios.get(API_URL);
     let films = await favFilms.data.results;
     let finalFilms = [];
-    films.map((film, index) => {
+    films.forEach(film => {
+    //films.map((film, index) => {
       let tempFilm = film;
       var episode_id = film.episode_id;
       const final_url = GET_FAVORITES_URL + episode_id;
@@ -74,11 +75,11 @@ class FilmTable extends React.Component {
         if(length > 0) {
           tempFilm.actions = <button type="button" id={episode_id} className="btn btn-default btn-sm" onClick={this.addToFavorite.bind(this, episode_id)}>
                           <span id={"span-"+episode_id} className="glyphicon glyphicon-star"></span> Add to Favourite
-                        </button>;
+                        </button>
         } else {
           tempFilm.actions = <button type="button" id={episode_id} className="btn btn-default btn-sm" onClick={this.addToFavorite.bind(this, episode_id)}>
                           <span id={"span-"+episode_id} className="glyphicon glyphicon-star-empty"></span> Add to Favourite
-                        </button>;
+                        </button>
         }
         finalFilms.push(tempFilm);
         this.setState({ films: finalFilms });
